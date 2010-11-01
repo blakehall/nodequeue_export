@@ -1,0 +1,20 @@
+<?php
+// $Id$
+
+// Work to get this into the Nodequeue module will take place at http://drupal.org/node/373174.
+// Also, this is dependent on this patch http://drupal.org/files/issues/machine-names4.patch
+// from http://drupal.org/node/817558.
+
+/**
+ * Implementation of hook_features_api().
+ */
+function nodequeue_export_features_api() {
+  return array(
+    'nodequeue_export' => array(
+      'name' => 'Nodequeues',
+      'file' => drupal_get_path('module', 'nodequeue_export') .'/nodequeue_export.features.inc',
+      'default_hook' => 'nodequeue_export_features_default_settings',
+      'feature_source' => TRUE,
+    ),
+  );
+}

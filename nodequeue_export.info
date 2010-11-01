@@ -1,0 +1,5 @@
+; $Id$
+name = Nodequeue Export
+description = Adds exportability support to nodequeue
+package = Nodequeue
+core = 6.x
