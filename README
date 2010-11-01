@@ -3,3 +3,5 @@ This module supports the exportability of nodequeue's.
 Hopefully work can continue on drupal.org to get this functionality added to the nodequeue module itself.
 
 http://drupal.org/node/373174
+
+NOTE: This module depends on the machine names patch available at: http://drupal.org/node/817558
