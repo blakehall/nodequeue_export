@@ -163,6 +163,6 @@ function _nodequeue_export_store_queue_data($data) {
     );
 
     $queue = (object) $queue;
-    nodequeue_save(&$queue);
+    nodequeue_save($queue);
   }
 }
