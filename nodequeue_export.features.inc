@@ -115,26 +115,23 @@ function nodequeue_export_features_revert($module) {
  * Take a nodequeue, loaded with the API, and format the data structure for export.
  */
 function _nodequeue_export_format_queue_data($queue) {
-  $queue_data = array();
-  foreach ($queue as $data) {
-    $queue_data = array(
-      'name' => $data->name,
-      'title' => $data->title,
-      'size' => $data->size,
-      'reverse' => $data->reverse,
-      'link' => $data->link,
-      'link_remove' => $data->link_remove,
-      'roles' => $data->roles,
-      'types' => $data->types,
-      'i18n' => $data->i18n,
-      'show_in_links' => $data->show_in_links,
-      'show_in_tab' => $data->show_in_tab, 
-      'show_in_ui' => $data->show_in_ui,
-      'subqueues' => $data->subqueues,
-      'add_subqueue' => array($data->title),
-      'new' => TRUE,
-    );
-  }
+  $queue_data = array(
+    'name' => $queue->name,
+    'title' => $queue->title,
+    'size' => $queue->size,
+    'reverse' => $queue->reverse,
+    'link' => $queue->link,
+    'link_remove' => $queue->link_remove,
+    'roles' => $queue->roles,
+    'types' => $queue->types,
+    'i18n' => $queue->i18n,
+    'show_in_links' => $queue->show_in_links,
+    'show_in_tab' => $queue->show_in_tab, 
+    'show_in_ui' => $queue->show_in_ui,
+    'subqueues' => $queue->subqueues,
+    'add_subqueue' => array($queue->title),
+    'new' => TRUE,
+  );
   return $queue_data;
 }
 
@@ -143,6 +140,7 @@ function _nodequeue_export_format_queue_data($queue) {
  */
 function _nodequeue_export_store_queue_data($data) {
   $data = (object) $data;
+  dpm($data);
   if (isset($data->name) && $dataname !== '') {
     $queue = array(
       'name' => $data->name,
