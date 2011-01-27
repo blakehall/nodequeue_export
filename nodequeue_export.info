@@ -2,4 +2,5 @@
 name = Nodequeue Export
 description = Adds exportability support to nodequeue
 package = Nodequeue
+dependencies [] = nodequeue
 core = 6.x
