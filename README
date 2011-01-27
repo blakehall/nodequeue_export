@@ -4,4 +4,4 @@ Hopefully work can continue on drupal.org to get this functionality added to the
 
 http://drupal.org/node/373174
 
-NOTE: This module depends on the machine names patch available at: http://drupal.org/node/817558
+NOTE: This module depends on the machine names functionality commited to 6.x-2.x-dev branch of nodequeue. 
