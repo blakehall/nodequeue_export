@@ -140,7 +140,6 @@ function _nodequeue_export_format_queue_data($queue) {
  */
 function _nodequeue_export_store_queue_data($data) {
   $data = (object) $data;
-  dpm($data);
   if (isset($data->name) && $dataname !== '') {
     $queue = array(
       'name' => $data->name,
