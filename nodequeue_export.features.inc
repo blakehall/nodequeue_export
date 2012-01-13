@@ -118,20 +118,26 @@ function _nodequeue_export_format_queue_data($queue) {
   $queue_data = array(
     'name' => $queue->name,
     'title' => $queue->title,
+    'subqueue_title' => $queue->subqueue_title,
     'size' => $queue->size,
     'reverse' => $queue->reverse,
     'link' => $queue->link,
     'link_remove' => $queue->link_remove,
+    'owner' => $queue->owner,
     'roles' => $queue->roles,
     'types' => $queue->types,
+    'reference' => $queue->reference,
     'i18n' => $queue->i18n,
     'show_in_links' => $queue->show_in_links,
     'show_in_tab' => $queue->show_in_tab,
     'show_in_ui' => $queue->show_in_ui,
-    'subqueues' => $queue->subqueues,
-    'add_subqueue' => array($queue->title),
     'new' => TRUE,
   );
+
+  if (empty($queue->owner)) {
+    $queue_data['add_subqueue'] = array($queue->title);
+  }
+
   return $queue_data;
 }
 
@@ -144,20 +150,25 @@ function _nodequeue_export_store_queue_data($data) {
     $queue = array(
       'name' => $data->name,
       'title' => $data->title,
+      'subqueue_title' => $data->subqueue_title,
       'size' => $data->size,
       'reverse' => $data->reverse,
       'link' => $data->link,
       'link_remove' => $data->link_remove,
+      'owner' => $data->owner,
       'roles' => $data->roles,
+      'reference' => $data->reference,
       'types' => $data->types,
       'i18n' => $data->i18n,
       'show_in_links' => $data->show_in_links,
       'show_in_tab' => $data->show_in_tab,
       'show_in_ui' => $data->show_in_ui,
-      'subqueues' => $data->subqueues,
-      'add_subqueue' => array($data->title),
       'new' => TRUE,
     );
+
+    if (!empty($data->add_subqueue)) {
+      $queue['add_subqueue'] => $data->add_subqueue;
+    }
 
     $queue = (object) $queue;
     nodequeue_save($queue);
