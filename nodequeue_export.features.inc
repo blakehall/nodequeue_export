@@ -11,13 +11,13 @@
  */
 function nodequeue_export_features_export_options() {
   $options = array();
-  
+
   // Bypass cache to get all the queues straight from the db.
   $queues = nodequeue_load_queues(nodequeue_get_all_qids(0), TRUE);
   foreach ($queues as $qid => $data) {
     $options[$data->name] = $data->title;
   }
-  
+
   return $options;
 }
 
@@ -40,12 +40,12 @@ function nodequeue_export_features_export($data, &$export, $module_name) {
   // These are the dependencies for this module to function properly
   $export['dependencies']['nodequeue_export'] = 'nodequeue';
   $export['dependencies']['nodequeue_export'] = 'nodequeue_export';
-  
+
   // This is a simple straight object export.
   foreach ($data as $component) {
     $export['features']['nodequeue_export'][$component] = $component;
   }
-  
+
   return array();
 }
 
@@ -65,10 +65,10 @@ function nodequeue_export_features_export($data, &$export, $module_name) {
  */
 function nodequeue_export_features_export_render($module_name, $data, $export = NULL) {
   $code = array();
-  
+
   $code[] = ' $nodequeue_export = array();';
   $code[] = '';
-  
+
   foreach ($data as $machine_name) {
     // Retrieve the nodequeue.
     $queue = nodequeue_load_queue_by_name($machine_name);
@@ -79,7 +79,7 @@ function nodequeue_export_features_export_render($module_name, $data, $export = 
       $code[] = ' $nodequeue_export[\'' .$queue_data['name'] .'\'] = ' .features_var_export($queue_data, ' ' ) .';';
     }
   }
-  
+
   $code[] = ' return $nodequeue_export;';
   $code = implode("\n", $code);
   return array('nodequeue_export_features_default_settings' => $code);
@@ -126,7 +126,7 @@ function _nodequeue_export_format_queue_data($queue) {
     'types' => $queue->types,
     'i18n' => $queue->i18n,
     'show_in_links' => $queue->show_in_links,
-    'show_in_tab' => $queue->show_in_tab, 
+    'show_in_tab' => $queue->show_in_tab,
     'show_in_ui' => $queue->show_in_ui,
     'subqueues' => $queue->subqueues,
     'add_subqueue' => array($queue->title),
@@ -152,7 +152,7 @@ function _nodequeue_export_store_queue_data($data) {
       'types' => $data->types,
       'i18n' => $data->i18n,
       'show_in_links' => $data->show_in_links,
-      'show_in_tab' => $data->show_in_tab, 
+      'show_in_tab' => $data->show_in_tab,
       'show_in_ui' => $data->show_in_ui,
       'subqueues' => $data->subqueues,
       'add_subqueue' => array($data->title),
