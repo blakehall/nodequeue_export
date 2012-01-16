@@ -167,7 +167,7 @@ function _nodequeue_export_store_queue_data($data) {
     );
 
     if (!empty($data->add_subqueue)) {
-      $queue['add_subqueue'] => $data->add_subqueue;
+      $queue['add_subqueue'] = $data->add_subqueue;
     }
 
     $queue = (object) $queue;
